@@ -25,7 +25,7 @@ public class MenuView extends JFrame {
 	private JPanel actionPanel;
     private JPanel targetPanel;
     JComboBox<String> comboBox;
-    public static String cenario;
+    public static String cenario = "cave";
     /**
      * Class constructor
      */
