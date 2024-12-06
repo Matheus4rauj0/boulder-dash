@@ -1,6 +1,9 @@
 package fr.enssat.BoulderDash.models;
 
 import javax.imageio.ImageIO;
+
+import fr.enssat.BoulderDash.views.MenuView;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +17,10 @@ import java.io.IOException;
  * @author      Colin Leverger <me@colinleverger.fr>
  * @since       2015-06-19
  */
+
+// As mudança que eu quero fazer podem ser feitas Aqui, apenas uma mensagem pra mim lembrar disso.
+//The changes I want to make can be made here, just a message to remind me of that.
+
 public abstract class DisplayableElementModel {
 	private static String spriteStorageFolderPath = "./res/drawable/field/";
 
@@ -30,6 +37,7 @@ public abstract class DisplayableElementModel {
     private boolean falling;
 	private boolean convertible;
 	private String collideSound;
+	private String Identifier = "cave";
 
 	/**
 	 * Static dataset
@@ -212,8 +220,13 @@ public abstract class DisplayableElementModel {
 	public BufferedImage loadSprite(String spriteName) {
 		BufferedImage sprite = null;
 
+		Identifier = "cave";
+		Identifier = MenuView.cenario;
+		
+
 		try {
-			sprite = ImageIO.read(new File("res/drawable/field/" + spriteName + ".gif"));
+			//alteração aqui
+			sprite = ImageIO.read(new File("res/drawable/field/"+ Identifier +"/" + spriteName + ".gif"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

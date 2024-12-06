@@ -24,7 +24,8 @@ public class MenuView extends JFrame {
     private MenuLevelSelector menuLevelSelector;
 	private JPanel actionPanel;
     private JPanel targetPanel;
-
+    JComboBox<String> comboBox;
+    public static String cenario;
     /**
      * Class constructor
      */
@@ -54,8 +55,13 @@ public class MenuView extends JFrame {
      * Creates the view layout
      */
     private void createLayout() {
+
+        comboBox = ComboBoxCreator.criarComboBoxDePastas();
+        comboBox.setBounds(50, 50, 200, 20);
+
         LevelSelectorHelper levelSelectorHelper = new LevelSelectorHelper(false);
         this.menuLevelSelector = levelSelectorHelper.createLevelList();
+        
 
         this.targetPanel = new JPanel();
 
@@ -69,9 +75,18 @@ public class MenuView extends JFrame {
 
         this.add(this.menuImage, BorderLayout.CENTER);
         this.add(targetPanel, BorderLayout.SOUTH);
+        
+        this.targetPanel.add(this.comboBox, BorderLayout.NORTH);
 
+        comboBox.addActionListener(e -> {
+            String valorSelecionado = (String) comboBox.getSelectedItem();
+            cenario = valorSelecionado;
+            System.out.println("Valor selecionado: " + valorSelecionado);
+        });
+        
         this.targetPanel.add(this.menuLevelSelector, BorderLayout.NORTH);
         this.targetPanel.add(this.actionPanel, BorderLayout.SOUTH);
+        
     }
 
     /**
@@ -97,5 +112,8 @@ public class MenuView extends JFrame {
      */
     public String getLevelIdentifier() {
         return this.menuLevelSelector.getChoiceValue();
+    }
+    public String getValorSelecionado() {
+        return (String) comboBox.getSelectedItem();
     }
 }
