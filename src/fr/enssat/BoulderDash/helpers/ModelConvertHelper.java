@@ -11,6 +11,7 @@ import fr.enssat.BoulderDash.models.BoulderModel;
 import fr.enssat.BoulderDash.models.DiamondModel;
 import fr.enssat.BoulderDash.models.DirtModel;
 import fr.enssat.BoulderDash.models.MagicWallModel;
+import fr.enssat.BoulderDash.models.PowerModel;
 import fr.enssat.BoulderDash.models.SteelWallModel;
 
 
@@ -85,6 +86,11 @@ public class ModelConvertHelper {
             case "Expanding Wall":
                 element = new ExpandingWallModel();
                 break;
+            
+                case "power":
+                case "Power":
+                    element = new PowerModel();
+                    break;
 
             default:
                 throw new UnknownModelException("Unknown model element > " + spriteName);
